@@ -66,7 +66,7 @@ func TryLoad(env func() string) (string, error) {
     return dir, err
 }
 
-func LoadOrCreate(env func() string) (string, error) {
+func LoadOrCreate(env func() string, subpaths ...string) (string, error) {
     dir, err := TryLoad(env)
     if err != nil {
         err = os.MkdirAll(dir, os.ModeDir | 0700)
@@ -74,5 +74,18 @@ func LoadOrCreate(env func() string) (string, error) {
             return "", err
         }
     }
+
+    if len(subpaths) > 0 {
+        crap := []string{dir}
+        dir = filepath.Join(append(crap, subpaths...)...)
+        result, err := checkDir(dir)
+        if !result || err != nil {
+            err = os.MkdirAll(dir, os.ModeDir | 0700)
+            if err != nil {
+                return "", err
+            }
+        }
+    }
+
     return dir, nil
 }
