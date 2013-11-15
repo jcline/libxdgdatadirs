@@ -11,7 +11,7 @@ var (
     envNotSet = errors.New("Environment variable not set")
 )
 
-func checkDir(path string) (bool, error) {
+func CheckDir(path string) (bool, error) {
     _, err := os.Stat(path)
     if err != nil {
         return false, err
