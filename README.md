@@ -3,7 +3,7 @@ libxdgdatadirs
 
 A simple go library implementing the XDG Base Directory Specification
 
-#Usage
+##Usage
 
 Add, to your source:
 
@@ -27,8 +27,8 @@ func main() {
 
 Then when you run `go build` for your program, it will automatically pull the library and build it.
 
-#Notes
+##Notes
 
-XDG_*_DIRS aren't fully supported at this time.
-    * XDG_CONFIG_HOME does not fall back to XDG_CONFIG_DIRS
-    * XDG_DATA_HOME does not fall back to XDG_DATA_DIRS
+* XDG_*_DIRS aren't fully supported at this time.
+  * XDG_CONFIG_HOME does not fall back to XDG_CONFIG_DIRS
+  * XDG_DATA_HOME does not fall back to XDG_DATA_DIRS
